@@ -3,38 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA Store - Foot Locker Style</title>
+    <title>NBA Store - Sketch V2</title>
     <style>
-        /* COLORI FOOT LOCKER: Nero #000, Bianco #fff, Rosso #ed1c24 */
-        body { font-family: 'Helvetica', Arial, sans-serif; margin: 0; background-color: #fff; color: #000; }
+        /* COLORI FOOT LOCKER */
+        :root { --red: #ed1c24; --black: #000; --white: #fff; --gray: #f2f2f2; }
         
-        /* NAVBAR */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: #000; color: #fff; position: sticky; top: 0; z-index: 1000; }
-        nav a { color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
-        nav a:hover { color: #ed1c24; }
-        .cart { background-color: #ed1c24; padding: 8px 15px; border-radius: 3px; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: var(--white); }
 
-        /* LAYOUT PRINCIPALE */
-        .container { display: flex; height: calc(100vh - 80px); overflow: hidden; }
+        /* HEADER & TOP BAR */
+        .top-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; background: var(--black); color: var(--white); font-size: 0.8rem; border-bottom: 2px solid var(--red); }
+        .login-section a { color: var(--white); text-decoration: none; font-weight: bold; }
+        .gender-selector a { color: var(--white); text-decoration: none; margin-left: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .gender-selector a:hover { color: var(--red); }
 
-        /* SEZIONE SINISTRA: Lifestyle (Immagini persone) */
-        .lifestyle-section { width: 40%; padding: 20px; overflow-y: auto; border-right: 2px solid #eee; background-color: #f9f9f9; }
-        .lifestyle-img { width: 100%; height: 300px; background: #ddd; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; font-style: italic; color: #666; border: 1px solid #ccc; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav a { color: var(--black); text-decoration: none; margin-right: 20px; font-weight: 900; text-transform: uppercase; }
+        .cart-btn { background: var(--red); color: var(--white) !important; padding: 10px 20px; }
 
-        /* SEZIONE DESTRA: Prodotti in sconto */
-        .products-section { width: 60%; padding: 20px; overflow-y: scroll; display: flex; flex-direction: column; align-items: center; }
-        .product-card { width: 80%; min-height: 400px; background: #fff; border: 2px solid #000; margin-bottom: 30px; position: relative; padding: 15px; text-align: center; }
-        .product-img { width: 100%; height: 250px; background: #eee; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; }
-        .discount-tag { position: absolute; top: 10px; left: 10px; background: #ed1c24; color: #fff; padding: 5px 10px; font-weight: bold; }
-        .price { font-size: 1.5rem; font-weight: bold; color: #ed1c24; }
-        .old-price { text-decoration: line-through; color: #888; margin-right: 10px; }
+        /* LAYOUT */
+        .main-grid { display: grid; grid-template-columns: 1fr 350px; height: 80vh; overflow: hidden; }
 
-        /* SCROLLBAR STYLE */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-thumb { background: #000; }
+        /* SINISTRA: BUNDLE E LIFESTYLE */
+        .left-content { overflow-y: auto; padding: 20px; border-right: 1px solid #ddd; }
+        
+        /* Bundle Slider (Simulazione) */
+        .bundle-container { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 20px; margin-bottom: 40px; scroll-snap-type: x mandatory; }
+        .bundle-card { min-width: 45%; height: 250px; background: var(--black); color: white; display: flex; align-items: center; justify-content: center; scroll-snap-align: start; flex-direction: column; }
+        
+        /* Immagini Persone (Spostate sotto) */
+        .lifestyle-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .person-box { width: 100%; height: 200px; background: #eee; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+
+        /* DESTRA: OFFERTE PICCOLE */
+        .offers-sidebar { background: var(--gray); overflow-y: auto; padding: 15px; }
+        .offer-mini-card { background: white; border: 1px solid #ddd; margin-bottom: 15px; padding: 10px; display: flex; gap: 10px; align-items: center; position: relative; }
+        .mini-img { width: 80px; height: 80px; background: #ddd; flex-shrink: 0; }
+        .offer-info h4 { margin: 0; font-size: 0.9rem; }
+        .mini-price { color: var(--red); font-weight: bold; }
+        .mini-tag { position: absolute; top: 5px; right: 5px; background: var(--red); color: white; font-size: 0.6rem; padding: 2px 5px; }
+
+        /* SCROLLBARS */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-thumb { background: var(--black); }
     </style>
 </head>
 <body>
+
+    <div class="top-header">
+        <div class="login-section">
+            <a href="#">ACCEDI / REGISTRATI</a>
+        </div>
+        <div class="gender-selector">
+            <a href="#">Uomo</a>
+            <a href="#">Donna</a>
+        </div>
+    </div>
 
     <header>
         <div class="logo"><strong>NBA</strong> VINTAGE</div>
@@ -42,45 +65,80 @@
             <a href="#">Acquista ora</a>
             <a href="#">Chi siamo</a>
             <a href="#">La nostra sede</a>
-            <a href="#" class="cart">CARRELLO</a>
+            <a href="#" class="cart-btn">CARRELLO</a>
         </nav>
     </header>
 
-    <div class="container">
-        <aside class="lifestyle-section">
-            <h2 style="text-transform: uppercase;">NBA Style</h2>
-            <div class="lifestyle-img">Immagine Persona 1 (Streetwear)</div>
-            <div class="lifestyle-img">Immagine Persona 2 (Vintage Look)</div>
-            <div class="lifestyle-img">Immagine Persona 3 (Current Season)</div>
+    <div class="main-grid">
+        
+        <section class="left-content">
+            <h2 style="text-transform: uppercase; border-left: 5px solid var(--red); padding-left: 10px;">I Nostri Bundle</h2>
+            <div class="bundle-container">
+                <div class="bundle-card">
+                    <h3>STARTER PACK</h3>
+                    <p>Maglia + Pantaloncini</p>
+                    <small>Risparmia 20%</small>
+                </div>
+                <div class="bundle-card" style="background: var(--red);">
+                    <h3>VINTAGE LOVER</h3>
+                    <p>2 Maglie Retro</p>
+                    <small>Prezzo Speciale</small>
+                </div>
+                <div class="bundle-card">
+                    <h3>ALL STAR BUNDLE</h3>
+                    <p>Maglia + Cappello</p>
+                </div>
+            </div>
+
+            <h2 style="text-transform: uppercase;">Community Style</h2>
+            <div class="lifestyle-gallery">
+                <div class="person-box">Foto Persona 1</div>
+                <div class="person-box">Foto Persona 2</div>
+                <div class="person-box">Foto Persona 3</div>
+                <div class="person-box">Foto Persona 4</div>
+            </div>
+        </section>
+
+        <aside class="offers-sidebar">
+            <h3 style="text-align: center; font-size: 1rem; text-transform: uppercase;">Sconti Flash</h3>
+            
+            <div class="offer-mini-card">
+                <div class="mini-tag">-15%</div>
+                <div class="mini-img"></div>
+                <div class="offer-info">
+                    <h4>Bulls 90s</h4>
+                    <span class="mini-price">65,00€</span>
+                </div>
+            </div>
+
+            <div class="offer-mini-card">
+                <div class="mini-tag">-30%</div>
+                <div class="mini-img"></div>
+                <div class="offer-info">
+                    <h4>Lakers Gold</h4>
+                    <span class="mini-price">50,00€</span>
+                </div>
+            </div>
+
+            <div class="offer-mini-card">
+                <div class="mini-tag">-50%</div>
+                <div class="mini-img"></div>
+                <div class="offer-info">
+                    <h4>Celtics Classic</h4>
+                    <span class="mini-price">45,00€</span>
+                </div>
+            </div>
+            
+            <div class="offer-mini-card">
+                <div class="mini-tag">-20%</div>
+                <div class="mini-img"></div>
+                <div class="offer-info">
+                    <h4>Heat Vice</h4>
+                    <span class="mini-price">70,00€</span>
+                </div>
+            </div>
         </aside>
 
-        <main class="products-section">
-            <h2 style="text-transform: uppercase; color: #ed1c24;">Offerte del Giorno</h2>
-            
-            <div class="product-card">
-                <div class="discount-tag">-30%</div>
-                <div class="product-img">Maglia Chicago Bulls (Jordan)</div>
-                <h3>Chicago Bulls Vintage</h3>
-                <p><span class="old-price">120€</span><span class="price">84€</span></p>
-                <button style="background:#000; color:#fff; padding:10px; width:100%; cursor:pointer;">AGGIUNGI AL CARRELLO</button>
-            </div>
-
-            <div class="product-card">
-                <div class="discount-tag">-20%</div>
-                <div class="product-img">Maglia LA Lakers (LeBron)</div>
-                <h3>Lakers Edition 2024</h3>
-                <p><span class="old-price">90€</span><span class="price">72€</span></p>
-                <button style="background:#000; color:#fff; padding:10px; width:100%; cursor:pointer;">AGGIUNGI AL CARRELLO</button>
-            </div>
-
-            <div class="product-card">
-                <div class="discount-tag">-50%</div>
-                <div class="product-img">Maglia Boston Celtics (Vintage)</div>
-                <h3>Celtics Retro</h3>
-                <p><span class="old-price">110€</span><span class="price">55€</span></p>
-                <button style="background:#000; color:#fff; padding:10px; width:100%; cursor:pointer;">AGGIUNGI AL CARRELLO</button>
-            </div>
-        </main>
     </div>
 
 </body>
