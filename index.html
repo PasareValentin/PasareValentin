@@ -71,7 +71,7 @@
         <nav>
             <a href="#">Acquista ora</a>
             <a href="#">Chi siamo</a>
-            <a href="#">La nostra sede</a>
+            <a href="#">Le nostra sedi</a>
             <a href="#" class="cart-btn">CARRELLO</a>
         </nav>
     </header>
@@ -127,6 +127,48 @@
             </div>
         </aside>
     </div>
+    <style>
+    /* STILE SEZIONE SEDI */
+    .stores-section {
+        padding: 60px 5%;
+        text-align: center;
+        background-color: var(--white);
+    }
+    .stores-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .map-frame {
+        width: 100%;
+        height: 500px;
+        border: 2px solid var(--black);
+        margin-top: 30px;
+        box-shadow: 10px 10px 0px var(--red);
+    }
+    .stores-text {
+        max-width: 700px;
+        margin: 0 auto 20px;
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+</style>
+
+<section id="sedi" class="stores-section">
+    <div class="stores-container">
+        <h2 style="text-transform: uppercase; letter-spacing: 2px;">Le Nostre Sedi</h2>
+        <div class="stores-text">
+            <p>NBAVINTAGE è presente nelle principali città italiane. Qui sotto puoi visualizzare i nostri punti vendita ufficiali dove puoi effettuare il <strong>ritiro fisico</strong> dei tuoi ordini online senza spese di spedizione.</p>
+        </div>
+        
+        <iframe 
+            class="map-frame"
+            src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d5102551.487140733!2d12.56738!3d41.87194!3m2!1i1024!2i768!4f13.1!2m1!1sNBA%20Store!5e0!3m2!1sit!2sit!4v1711000000000!5m2!1sit!2sit" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
 
     <script>
         let currentSlide = 0;
